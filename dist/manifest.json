@@ -1,7 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Vaccination Slots Monitor",
-    "version": "0.0.2",
+    "description": "This app monitors vaccination slots avalability on CoWin website and is based on CoWin Open API",
+    "version": "0.0.1",
     "background": {
         "scripts": ["background.js"],
         "persistent": true
