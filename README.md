@@ -10,7 +10,7 @@
 0. Download dist folder from GitHub
 1. Follow steps 2 to 5 from above
 
-# Installing in Firefox Mobile or PC version
+# Installing in PC version
 0. Open Firefox
 1. Visit this page
 2. Click on firefox-extension.xpi and download it
