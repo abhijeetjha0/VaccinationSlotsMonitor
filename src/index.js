@@ -14,6 +14,20 @@ document.getElementById("45plus-mode").addEventListener("click", (event) => {
     );
 });
 
+document.getElementById("covishield").addEventListener("click", (event) => {
+    chrome.storage.sync.set(
+        { covishield: event.target.checked },
+        function () {}
+    );
+});
+
+document.getElementById("covaxin").addEventListener("click", (event) => {
+    chrome.storage.sync.set(
+        { covaxin: event.target.checked },
+        function () {}
+    );
+});
+
 document.getElementById("toggle-switch").addEventListener("click", (event) => {
     chrome.storage.sync.set(
         { toggleSwitch: event.target.checked },
@@ -21,11 +35,23 @@ document.getElementById("toggle-switch").addEventListener("click", (event) => {
     );
 });
 
+document.getElementsByName("dose").forEach((element) => {
+    element.addEventListener("click", (event) => {
+        chrome.storage.sync.set(
+            { doseNumber: event.target.id },
+            function () {}
+        );
+    });
+})
+
 function getInfo() {
-    chrome.storage.sync.get(["pincode", "seniorMode", "toggleSwitch"], function (result) {
-        const { pincode, seniorMode, toggleSwitch } = result;
+    chrome.storage.sync.get(["pincode", "seniorMode", "toggleSwitch", "doseNumber", "covishield", "covaxin"], function (result) {
+        const { pincode, seniorMode, toggleSwitch, doseNumber, covishield, covaxin } = result;
         document.getElementById("45plus-mode").checked = seniorMode;
         document.getElementById("toggle-switch").checked = toggleSwitch;
+        document.getElementById("covishield").checked = covishield;
+        document.getElementById("covaxin").checked = covaxin;
+        document.getElementById(`${doseNumber ? doseNumber: "dose1"}`).checked = true;
 
         if (pincode) {
             document.querySelector(".message").innerHTML =
